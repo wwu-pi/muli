@@ -1,0 +1,10 @@
+[submodule "muli-env"]
+	path = muli-env
+	url = git@github.com:wwu-pi/muli-env.git
+[submodule "muli-classpath"]
+	path = muli-classpath
+	url = git@github.com:wwu-pi/muli-classpath.git
+[submodule "muggl-for-muli"]
+	path = muggl-for-muli
+	url = git@github.com:wwu-pi/muggl.git
+	branch = muli-env
