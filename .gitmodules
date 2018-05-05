@@ -8,3 +8,6 @@
 	path = muggl-for-muli
 	url = git@github.com:wwu-pi/muggl.git
 	branch = muli-env
+[submodule "muli-lang"]
+	path = muli-lang
+	url = git@github.com:wwu-pi/muli-lang.git
