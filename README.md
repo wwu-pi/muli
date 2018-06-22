@@ -13,18 +13,18 @@ features adapted from constraint-logic programming.
 # Set up a development environment
 
 1. Clone the repository and `cd` into it.
-2. Clone the submodules: `git submodule update --init`.
-3. Install dependencies: `make`.
-4. Develop inside the `muli-env` directory.
-5. There, use `./gradlew run` to execute Muli.
+2. Install dependencies: `make`.
+3. Develop the runtime inside the `muli-env` directory. There, use `./gradlew run` to execute Muli; arguments (e. g., class to execute) can be added via ` -Dexec.args="..."`.
+4. Develop the compiler inside `muli-lang`. There, run `./gradlew jar` to package the compiler and run the created jar.
 
 # Create a distribution
 
 1. Clone the repository and `cd` into it.
 2. Run `make muli-env.zip`. The created file `muli-env.zip` is a full archive containing the Muli runtime and its dependencies.
 3. Deploy that file where you need it by extracting its contents.
-5. Use a starter from `muli-env-*/bin/` according to your OS.
+4. Use a starter from `muli-env-*/bin/` according to your OS.
+5. Run `make muli-lang.jar`. The jar archive contains the Muli compiler, ready for use.
 
 # Context
 
-Muli is a research project at the Chair for Practical Computer Science, ERCIS, University of Münster.
+Muli is a research project at the [Chair for Practical Computer Science](https://www.wi.uni-muenster.de/department/pi), ERCIS, University of Münster.
