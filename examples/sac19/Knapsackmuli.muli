@@ -1,0 +1,44 @@
+public class Knapsackmuli {
+	int n = 9;           // number of items
+	int[] weights;       // weights of items
+	int[] benefits;      // benefits of items
+	int[] amounts;       // amount of times each item is included
+	int capacity = 100;  // capacity of knapsack;
+	int minBenefit = 80; // minimal expected overall benefit (initially 80, then gradually increased)
+
+	public Knapsackmuli(){
+		weights = new int[n]; benefits = new int[n];
+		// generate arbitrary items
+		for(int i=0; i<n; i++) {
+			weights[i] = i+2;
+			benefits[i] = i+1; }
+
+		boolean finished;
+		do {
+			// find better solution
+			Stream<Solution<Integer>> solutions = Muli.search(() -> {
+				amounts = fillKnapsack(n); 
+				return checkKnapsack(minBenefit);
+			}).limit(1);
+			Optional<Solution<Object>> solution = solutions.findFirst();
+			finished = !solution.isPresent();
+			if (!finished) minBenefit = (int)(solution.get().value);
+		} while (!finished);
+
+		System.out.println("the maximum possible benefit is "+minBenefit); }
+		
+	public int[] fillKnapsack(int n){
+		int[] amounts = new int[n];
+		for(int i=0; i<n; i++) { 
+			int amount free;
+			amounts[i] = amount; }
+		return amounts; }
+
+	public int checkKnapsack(int minBenefit){
+		int w = 0, b = 0;
+		for(int i=0; i<n; i++){
+			w += amounts[i] * weights[i];
+			b += amounts[i] * benefits[i];
+		}
+		if (w > capacity || b <= minBenefit) throw Muli.fail();
+		return b; } }
