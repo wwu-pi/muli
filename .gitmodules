@@ -1,6 +1,3 @@
-[submodule "muli-env"]
-	path = muli-env
-	url = git@github.com:wwu-pi/muli-env.git
 [submodule "muli-classpath"]
 	path = muli-classpath
 	url = git@github.com:wwu-pi/muli-classpath.git
@@ -11,3 +8,7 @@
 [submodule "muli-lang"]
 	path = muli-lang
 	url = git@github.com:wwu-pi/muli-lang.git
+[submodule "muli-env-st"]
+	path = muli-env-st
+	url = git@github.com:Dagefoerde/muli-ST.git
+	branch = muli-env-st
