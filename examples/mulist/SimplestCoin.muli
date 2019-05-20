@@ -21,7 +21,11 @@ public class SimplestCoin {
   private static int searchCoins() {
     int coin free;
     
-    return 0;
+    if (coin == 0) {
+      return 0;
+    } else {
+      return 1;
+    }
   }
 
 }
