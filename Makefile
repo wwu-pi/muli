@@ -23,12 +23,16 @@ install-root-submodules:
 install-submodules: install-root-submodules install-muli-lang-submodules
 
 muli-env.zip: install-root-submodules install-muli-classpath
+	cd muli-env && $(GRADLE) distZip 
+	cp "$$(ls -t ./muli-env/build/distributions/muli-env-* | head -1)" muli-env.zip
+
+muli-env-st.zip: install-root-submodules install-muli-classpath
 	cd muli-env-st && $(GRADLE) distZip 
-	cp "$$(ls -t ./muli-env-st/build/distributions/muli-env-* | head -1)" muli-env.zip
+	cp "$$(ls -t ./muli-env-st/build/distributions/muli-env-st-* | head -1)" muli-env-st.zip
 
 muli-lang.jar: install-root-submodules install-muli-lang
 	cd muli-lang && $(GRADLE) jar
 	cp "$$(ls -t ./muli-lang/muli-lang-*.jar | head -1)" muli-lang.jar
 
 .PHONY: dist
-dist: muli-env.zip muli-lang.jar
+dist: muli-env.zip muli-lang.jar muli-env-st.zip

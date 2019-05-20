@@ -12,3 +12,7 @@
 	path = muli-env-st
 	url = git@github.com:Dagefoerde/muli-ST.git
 	branch = muli-env-st
+[submodule "muli-env"]
+	path = muli-env
+	url = git@github.com:wwu-pi/muli-env.git
+	branch = muli-env-st
