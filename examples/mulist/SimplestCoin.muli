@@ -18,13 +18,13 @@ public class SimplestCoin {
     }
   } 
 
-  private static int searchCoins() {
+  private static boolean searchCoins() {
     int coin free;
     
     if (coin == 0) {
-      return 0;
+      return false;
     } else {
-      return 1;
+      return true;
     }
   }
 
