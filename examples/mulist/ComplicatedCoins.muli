@@ -1,0 +1,39 @@
+package mulist;
+
+import java.util.List;
+import de.wwu.muli.*;
+import de.wwu.muli.solution.*;
+
+public class ComplicatedCoins {
+
+  public static void main(String[] args) {
+    new ComplicatedCoins();
+  }
+
+  public ComplicatedCoins(){
+    List<Solution<Object>> solutions = Muli.getAllSolutions(ComplicatedCoins::searchCoins);
+
+    for (Solution<Object> solution : solutions) {
+      System.out.println(solution.value);
+    }
+  }
+
+  private static boolean searchCoins() {
+    int coin1 = 0;
+
+    if (coin1 == 0) {
+      if (coin2 == 0) {
+        return coin1 == 0 || false;
+      } else {
+        return coin1 == 0 || coin2 == 0;
+      }
+    } else {
+      if (coin2 == 0) {
+        return coin1 == 0 & coin2 == 0;
+      } else {
+        return coin1 == 0 && true;
+      }
+    }
+  }
+
+}
