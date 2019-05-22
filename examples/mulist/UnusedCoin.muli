@@ -1,0 +1,27 @@
+package mulist;
+
+import java.util.List;
+import de.wwu.muli.*;
+import de.wwu.muli.solution.*;
+
+public class UnusedCoin {
+
+  public static void main(String[] args) {
+    new UnusedCoin();
+  }
+
+  public UnusedCoin(){
+    List<Solution<Object>> solutions = Muli.getAllSolutions(UnusedCoin::searchCoins);
+
+    for (Solution<Object> solution : solutions) {
+      System.out.println(solution.value);
+    }
+  }
+
+  private static int searchCoins() {
+    int coin free;
+
+    return 0;
+  }
+
+}
