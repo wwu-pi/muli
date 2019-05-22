@@ -20,6 +20,8 @@ public class SimplestCoin {
 
   private static boolean searchCoins() {
     int coin free;
+    int x = 0;
+    x = 1;
     
     if (coin == 0) {
       return false;
