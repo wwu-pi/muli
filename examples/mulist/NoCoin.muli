@@ -19,8 +19,6 @@ public class NoCoin {
   } 
 
   private static int searchCoins() {
-    int coin free;
-    
     return 0;
   }
 
