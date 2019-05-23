@@ -19,17 +19,17 @@ public class ComplicatedCoins {
   }
 
   private static boolean searchCoins() {
-    int coin1 = 0;
+    int coin1 free, coin2 free;
 
     if (coin1 == 0) {
       if (coin2 == 0) {
         return coin1 == 0 || false;
       } else {
-        return coin1 == 0 || coin2 == 0;
+        return false;
       }
     } else {
       if (coin2 == 0) {
-        return coin1 == 0 & coin2 == 0;
+        return coin1 == 0 && coin2 == 0;
       } else {
         return coin1 == 0 && true;
       }
