@@ -1,0 +1,31 @@
+package mulist;
+
+import java.util.List;
+import de.wwu.muli.*;
+import de.wwu.muli.solution.*;
+
+public class FailCoin {
+
+  public static void main(String[] args) {
+    new FailCoin();
+  }
+
+  public FailCoin(){
+    List<Solution<Object>> solutions = Muli.getAllSolutions(FailCoin::searchCoins);
+    
+    for (Solution<Object> solution : solutions) {
+      System.out.println(solution.value);
+    }
+  } 
+
+  private static boolean searchCoins() {
+    int coin free;
+    
+    if (coin == 0) {
+      throw Muli.fail();
+    } else {
+      return true;
+    }
+  }
+
+}
