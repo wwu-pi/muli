@@ -1,0 +1,84 @@
+package mulist;
+import java.util.stream.Stream;
+import de.wwu.muli.*;
+import de.wwu.muli.solution.*;
+
+public class Partition3 {
+    int n = 18;     // number of input values
+    int m = n / 3;   // number of triples taken from input values
+    int[] a;       // random input of length n
+    int sum = 0;   // sum of all inputs
+    int[] mapping; // mapping of inputs to triples
+
+    public static void main(String[] args) {
+        System.out.println("Program start.");
+        final long start = System.currentTimeMillis();
+        new Partition3();
+        final long timeEnd = System.currentTimeMillis();
+        System.out.println("Runtime: " + (timeEnd - start) + " Millisec.");
+    }
+
+    public Partition3() {
+        //a = toN(n); // generate some input
+        a = new int[]{
+                //        19,4,2,
+                //        18,6,1,
+                //        18,5,2,
+                //        18,4,3,
+                17, 7, 1,
+                22, 2, 1,
+                21, 3, 1,
+                20, 4, 1,
+                20, 3, 2,
+                19, 5, 1};
+        for (int k : a) sum += k;
+
+        // map each input element to a triple
+        Stream<Solution<Object>> solution = Muli.muli(() -> {
+            mapping = generateMapping(n);
+            checkMapping();
+            return mapping;
+        }).limit(1);
+
+        // print the results
+        Integer[] result = (Integer[]) solution.findFirst().get().value;
+        for (int i = 0; i < n; i++)
+            System.out.println(a[i] + " assigned to triple " + result[i]);
+    }
+
+
+    public static int[] toN(int n) {
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) a[i] = i;
+        return a;
+    }
+
+    public int[] generateMapping(int n) {
+        int[] mapping = new int[n];
+        for (int i = 0; i < n; i++) {
+            int triple = freeInt();
+            if (triple <= 0 || triple > m)
+                throw Muli.fail();
+            else mapping[i] = triple;
+        }
+        return mapping;
+    }
+
+    public int freeInt() {
+        int x free;
+        return x;
+    }
+
+    public void checkMapping() {
+        for (int j = 1; j <= m; j++) {
+            int sum3 = 0;
+            int occurrences = 0;
+            for (int i = 0; i < n; i++)
+                if (mapping[i] == j) {
+                    occurrences++;
+                    sum3 += a[i];
+                }
+            if (occurrences != 3 || sum3 != sum / m) throw Muli.fail();
+        }
+    }
+}
