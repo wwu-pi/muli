@@ -3,7 +3,7 @@ import java.util.stream.Stream;
 import de.wwu.muli.*;
 import de.wwu.muli.solution.*;
 
-public class Partition3 {
+public class Partition3fixed {
     int n = 18;     // number of input values
     int m = n / 3;   // number of triples taken from input values
     int[] a;       // random input of length n
@@ -13,12 +13,12 @@ public class Partition3 {
     public static void main(String[] args) {
         System.out.println("Program start.");
         final long start = System.currentTimeMillis();
-        new Partition3();
+        new Partition3fixed();
         final long timeEnd = System.currentTimeMillis();
         System.out.println("Runtime: " + (timeEnd - start) + " Millisec.");
     }
 
-    public Partition3() {
+    public Partition3fixed() {
         //a = toN(n); // generate some input
         a = new int[]{
                 //        19,4,2,
