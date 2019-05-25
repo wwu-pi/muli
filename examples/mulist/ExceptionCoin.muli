@@ -1,0 +1,31 @@
+package mulist;
+
+import java.util.List;
+import de.wwu.muli.*;
+import de.wwu.muli.solution.*;
+
+public class ExceptionCoin {
+
+  public static void main(String[] args) {
+    new ExceptionCoin();
+  }
+
+  public ExceptionCoin(){
+    List<Solution<Object>> solutions = Muli.getAllSolutions(ExceptionCoin::searchCoins);
+    
+    for (Solution<Object> solution : solutions) {
+      System.out.println(solution.value);
+    }
+  } 
+
+  private static boolean searchCoins() {
+    int coin free;
+    
+    if (coin == 0) {
+      throw new RuntimeException("Ups");
+    } else {
+      return true;
+    }
+  }
+
+}
