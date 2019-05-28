@@ -1,0 +1,30 @@
+package mulist;
+
+import java.util.stream.Stream;
+import de.wwu.muli.*;
+import de.wwu.muli.solution.*;
+
+public class NonTerminatingCoin {
+
+  public static void main(String[] args) {
+    new NonTerminatingCoin();
+  }
+
+  public NonTerminatingCoin() {
+    // This program does not find any solution using DFS, but does so using BFS.
+    Stream<Solution<Object>> solutions = Muli.muli(NonTerminatingCoin::searchCoins, SearchStrategy.BreadthFirstSearch).limit(1);
+
+    System.out.println(solutions.findFirst().get().value);
+  }
+
+  private static boolean searchCoins() {
+    int coin free;
+    
+    if (coin == 0) {
+      return searchCoins();
+    } else {
+      return true;
+    }
+  }
+
+}
