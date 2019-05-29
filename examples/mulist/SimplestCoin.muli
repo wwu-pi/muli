@@ -11,14 +11,14 @@ public class SimplestCoin {
   }
 
   public SimplestCoin(){
-    List<Solution<Object>> solutions = Muli.getAllSolutions(SimplestCoin::searchCoins);
+    List<Solution<Object>> solutions = Muli.getAllSolutions(SimplestCoin::flipCoins);
     
     for (Solution<Object> solution : solutions) {
       System.out.println(solution.value);
     }
   } 
 
-  private static boolean searchCoins() {
+  private static boolean flipCoins() {
     int coin free;
     int x = 0;
     x = 1;
