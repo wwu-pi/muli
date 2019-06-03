@@ -1,0 +1,33 @@
+package mulist;
+
+import java.util.List;
+import de.wwu.muli.*;
+import de.wwu.muli.solution.*;
+
+public class FreeCoin {
+
+  public static void main(String[] args) {
+    new FreeCoin();
+  }
+
+  public FreeCoin(){
+    List<Solution<Object>> solutions = Muli.getAllSolutions(FreeCoin::searchCoins);
+    
+    for (Solution<Object> solution : solutions) {
+      System.out.println(solution.value);
+    }
+  } 
+
+  private static int searchCoins() {
+    int coin free;
+
+    if (coin == 0) {
+      return coin;
+    } else {
+      return 1;
+    }
+
+
+  }
+
+}
