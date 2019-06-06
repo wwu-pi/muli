@@ -38,7 +38,7 @@ public class Partition3fixed {
             mapping = generateMapping(n);
             checkMapping();
             return mapping;
-        }).limit(1);
+        }, SearchStrategy.DepthFirstSearch).limit(1);
 
         // print the results
         Integer[] result = (Integer[]) solution.findFirst().get().value;
