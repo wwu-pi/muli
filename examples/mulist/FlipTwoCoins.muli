@@ -23,9 +23,7 @@ public class FlipTwoCoins {
         int coin1 free, coin2 free;
         if (coin1 == 0) {
             return false;
-        }
-
-        if (coin2 == 0) {
+        } else if (coin2 == 0) {
             throw Muli.fail();
         } else {
             return true;
