@@ -22,11 +22,14 @@ public class FlipTwoCoins {
     private static boolean flipTwoCoins() {
         int coin1 free, coin2 free;
         if (coin1 == 0) {
-            if (coin2 == 0)
-                return true;
-            else
-                throw Muli.fail();
+            return false;
         }
-        return false;
+
+        if (coin2 == 0) {
+            throw Muli.fail();
+        } else {
+            return true;
+        }
+
     }
 }
