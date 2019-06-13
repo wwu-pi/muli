@@ -12,9 +12,9 @@ public class Partition3fixed {
 
     public static void main(String[] args) {
 	for (int i = 0; i<65; i++) {
-        	final long start = System.currentTimeMillis();
+        	final long start = System.nanoTime();
 	        new Partition3fixed();
-        	final long timeEnd = System.currentTimeMillis();
+        	final long timeEnd = System.nanoTime();
 	        System.out.println("" + (timeEnd - start));
 	}
     }
