@@ -12,7 +12,7 @@ public class NonTerminatingCoin {
 
   public NonTerminatingCoin() {
     // This program does not find any solution using DFS, but does so using BFS.
-    Stream<Solution<Object>> solutions = Muli.muli(NonTerminatingCoin::nonTerminatingCoin, SearchStrategy.BreadthFirstSearch);
+    Stream<Solution<Object>> solutions = Muli.muli(NonTerminatingCoin::nonTerminatingCoin, SearchStrategy.IterativeDeepening);
 
     //System.out.println(solutions.findFirst().get().value);
     // Before executing the following: Ensure that de.wwu.muli.env.nativeimpl.SolutionIterator#abortAfter1Second is true! Then watch the output.
