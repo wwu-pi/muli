@@ -61,9 +61,9 @@ public class Queens {
   public static int freeVar(int lower, int upper) {
     int i free;
 
-    if (i >= lower && i <= upper)
-      return i;
+    if (i < lower ||  i > upper)
+      throw Muli.fail();
 
-    throw Muli.fail();
+    return i;
   }
 }
