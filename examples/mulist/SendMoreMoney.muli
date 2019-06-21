@@ -1,0 +1,68 @@
+package mulist;
+
+import java.util.stream.Stream;
+import de.wwu.muli.*;
+import de.wwu.muli.solution.*;
+
+public class SendMoreMoney {
+
+  public static void main(String[] args) {
+    System.out.println("Program started.");
+
+    final long start = System.currentTimeMillis();
+
+    new SendMoreMoney();
+
+    final long end = System.currentTimeMillis();
+
+    System.out.println("Program finshed. Execution time: " + (end - start) + " ms");
+  }
+
+  public SendMoreMoney() {
+    Stream<Solution<Object>> solutions = Muli.muli(() -> {
+      int[] letters = new int[8];
+
+      for (int i = 0; i < letters.length; i++) {
+        letters[i] = freeVar(0, 9);
+      }
+
+      int s = letters[0];
+      int e = letters[1];
+      int n = letters[2];
+      int d = letters[3];
+      int m = letters[4];
+      int o = letters[5];
+      int r = letters[6];
+      int y = letters[7];
+
+      if (s == 0 || m == 0)
+        throw Muli.fail();
+
+      for (int i = 0; i < letters.length - 1; i++) {
+        for (int j = i + 1; j < letters.length; j++) {
+          if (letters[i] == letters[j])
+            throw Muli.fail();
+        }
+      }
+
+      if (1000*s + 100*e + 10*n + d + 1000*m + 100*o + 10*r + e != 10000*m + 1000*o + 100*n + 10*e + y)
+        throw Muli.fail();
+
+      return letters;
+    }, SearchStrategy.DepthFirstSearch);
+
+    Integer[] result = (Integer[]) solutions.findFirst().get().value;
+
+    for(int i = 0; i < result.length; i++)
+      System.out.println(result[i]);
+  }
+
+  public static int freeVar(int lower, int upper) {
+    int i free;
+
+    if (i < lower ||  i > upper)
+      throw Muli.fail();
+
+    return i;
+  }
+}
