@@ -4,32 +4,27 @@ import de.wwu.muli.*;
 import de.wwu.muli.solution.*;
 
 public class WaterJug {
-	int a = 4; // Capacity of the first jug.
-	int b = 3; // Capacity of the second jug.
-	int t = 2; // Target capacity has to be a multiple of gcd(a, b).
+	final int a = 4; // Capacity of the first jug.
+    final int b = 3; // Capacity of the second jug.
+    final int t = 2; // Target capacity has to be a multiple of gcd(a, b).
 
 	public static void main(String[] args) {
 		System.out.println("Program started.");
-
-		final long start = System.currentTimeMillis();
-
 		new WaterJug();
 
-		final long end = System.currentTimeMillis();
-
-		System.out.println("Program finshed. Execution time: " + (end - start) + " ms");
 	}
 
 	public WaterJug() {
 		Stream<Solution<Object>> solutions = Muli.muli(() -> {
-		  int[] jugs = {0, 0};
+		    int[] jugs = {0, 0};
 
-		  return step(jugs);
-		}, SearchStrategy.BreadthFirstSearch);
+		    return step(jugs);
+		}, SearchStrategy.IterativeDeepening);
+		//}, SearchStrategy.BreadthFirstSearch);
+		//}, SearchStrategy.DepthFirstSearch);
 
-		Boolean result = (Boolean) solutions.findFirst().get().value;
-
-		System.out.println(result);
+		// Before executing the following: Ensure that de.wwu.muli.env.nativeimpl.SolutionIterator#abortEarly is true! Then watch the output.
+		solutions.count();
 	}
 
 	public boolean step(int[] jugs) {

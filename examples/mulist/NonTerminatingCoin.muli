@@ -15,7 +15,7 @@ public class NonTerminatingCoin {
     Stream<Solution<Object>> solutions = Muli.muli(NonTerminatingCoin::nonTerminatingCoin, SearchStrategy.IterativeDeepening);
 
     //System.out.println(solutions.findFirst().get().value);
-    // Before executing the following: Ensure that de.wwu.muli.env.nativeimpl.SolutionIterator#abortAfter1Second is true! Then watch the output.
+    // Before executing the following: Ensure that de.wwu.muli.env.nativeimpl.SolutionIterator#abortEarly is true! Then watch the output.
     System.out.println(solutions.count());
   }
 
