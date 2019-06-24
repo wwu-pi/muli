@@ -25,7 +25,7 @@ public class WaterJug {
 		  int[] jugs = {0, 0};
 
 		  return step(jugs);
-		});
+		}, SearchStrategy.BreadthFirstSearch);
 
 		Boolean result = (Boolean) solutions.findFirst().get().value;
 
