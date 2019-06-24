@@ -9,14 +9,12 @@ public class Queens {
 
   public static void main(String[] args) {
     System.out.println("Program started.");
-
-    final long start = System.currentTimeMillis();
-
-    new Queens(4);
-
-    final long end = System.currentTimeMillis();
-
-    System.out.println("Program finshed. Execution time: " + (end - start) + " ms");
+    for (int i = 0; i<65; i++) {
+      final long start = System.nanoTime();
+      new Queens(4);
+      final long timeEnd = System.nanoTime();
+      System.out.println("" + (timeEnd - start));
+    }
   }
 
   public Queens(int n) {
