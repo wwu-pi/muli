@@ -7,15 +7,17 @@ import de.wwu.muli.solution.*;
 public class SendMoreMoney {
 
   public static void main(String[] args) {
-    System.out.println("Program started.");
+    // Note: de.wwu.muggl.solvers.jacop.JaCoPTransformer.DOMAIN_DEPRECIATION may be at most 10_000.
+      System.out.println("Program started.");
+      for (int i = 0; i<65; i++) {
+          final long start = System.nanoTime();
 
-    final long start = System.currentTimeMillis();
+          new SendMoreMoney();
 
-    new SendMoreMoney();
+          final long end = System.nanoTime();
 
-    final long end = System.currentTimeMillis();
-
-    System.out.println("Program finshed. Execution time: " + (end - start) + " ms");
+          System.out.println("" + (end - start));
+      }
   }
 
   public SendMoreMoney() {
