@@ -62,7 +62,7 @@ public class WaterJug {
 				return step(jugs);
 			}
 		} else if (choice == 3) {
-			// Empty the first jug.
+			// Empty the second jug.
 			if (jugs[1] > 0) {
 				jugs[1] = 0;
 
@@ -71,9 +71,9 @@ public class WaterJug {
 		} else if (choice == 4) {
 			// Pour from second jug into first jug until the first jug is full or the second jug is empty.
 			if (jugs[1] > 0) {
-				int x = Math.max(0, jugs[0] + jugs[1] - b);
+				int x = Math.min(jugs[0] + jugs[1], a);
 
-				jugs[1] = Math.min(jugs[0] + jugs[1], b);
+				jugs[1] = Math.max(0, jugs[0] + jugs[1] - a);
 				jugs[0] = x;
 
 				return step(jugs);
@@ -81,9 +81,9 @@ public class WaterJug {
 		} else {
 			// Pour from second jug into first jug until the first jug is full or the second jug is empty.
 			if (jugs[0] > 0) {
-				int x = Math.min(jugs[0] + jugs[1], a);
+				int x = Math.max(0, jugs[0] + jugs[1] - b);
 
-				jugs[1] = Math.max(0, jugs[0] + jugs[1] - a);
+				jugs[1] = Math.min(jugs[0] + jugs[1], b);
 				jugs[0] = x;
 
 				return step(jugs);
