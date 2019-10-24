@@ -1,0 +1,23 @@
+language: java
+sudo: required
+jdk:
+  - openjdk8
+
+git:
+  depth: 1
+  
+script: 
+  - cd muli-env
+  - ./gradlew :muli-runtime:check --stacktrace
+
+after_success:
+  - ./gradlew :muli-runtime:codeCoverageReport
+  - bash <(curl -s https://codecov.io/bash)
+  
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/

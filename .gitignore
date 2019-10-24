@@ -3,3 +3,4 @@ muli-env-st.zip
 muli-lang.jar
 *.swp
 *.class
+.gradle/
