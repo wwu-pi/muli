@@ -3,6 +3,9 @@ sudo: required
 jdk:
   - openjdk8
 
+environment:
+  - TERM=dumb
+
 git:
   depth: 1
   submodules: false # Handle git submodules yourself
