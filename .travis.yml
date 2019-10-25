@@ -20,7 +20,7 @@ script:
   - ./gradlew :muli-runtime:check --stacktrace
 
 after_success:
-  - ./gradlew :muli-runtime:codeCoverageReport
+  - ./gradlew :codeCoverageReport
   - bash <(curl -s https://codecov.io/bash)
   
 before_cache:
