@@ -11,7 +11,7 @@ public class FreeCoin {
   }
 
   public FreeCoin(){
-    List<Solution<Object>> solutions = Muli.getAllSolutions(FreeCoin::searchCoins);
+    Solution<Object>[] solutions = Muli.getAllSolutions(FreeCoin::searchCoins);
     
     for (Solution<Object> solution : solutions) {
       System.out.println(solution.value);

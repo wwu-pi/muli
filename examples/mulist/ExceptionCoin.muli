@@ -11,7 +11,7 @@ public class ExceptionCoin {
   }
 
   public ExceptionCoin(){
-    List<Solution<Object>> solutions = Muli.getAllSolutions(ExceptionCoin::searchCoins);
+    Solution<Object>[] solutions = Muli.getAllSolutions(ExceptionCoin::searchCoins);
     
     for (Solution<Object> solution : solutions) {
       System.out.println(solution.value);

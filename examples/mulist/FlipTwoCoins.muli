@@ -7,12 +7,12 @@ import de.wwu.muli.solution.*;
 public class FlipTwoCoins {
 
     public static void main(String[] args) {
-        List<Solution<Object>> solutionsDfs = Muli.getAllSolutions(FlipTwoCoins::flipTwoCoins, SearchStrategy.DepthFirstSearch);
+        Solution<Object>[] solutionsDfs = Muli.getAllSolutions(FlipTwoCoins::flipTwoCoins, SearchStrategy.DepthFirstSearch);
         for (Solution<Object> solution : solutionsDfs) {
             System.out.println(solution.value);
         }
 
-        List<Solution<Object>> solutionsBfs = Muli.getAllSolutions(FlipTwoCoins::flipTwoCoins, SearchStrategy.BreadthFirstSearch);
+        Solution<Object>[] solutionsBfs = Muli.getAllSolutions(FlipTwoCoins::flipTwoCoins, SearchStrategy.BreadthFirstSearch);
         for (Solution<Object> solution : solutionsBfs) {
             System.out.println(solution.value);
         }

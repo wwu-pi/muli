@@ -11,7 +11,7 @@ public class FailCoin {
   }
 
   public FailCoin(){
-    List<Solution<Object>> solutions = Muli.getAllSolutions(FailCoin::searchCoins);
+    Solution<Object>[] solutions = Muli.getAllSolutions(FailCoin::searchCoins);
     
     for (Solution<Object> solution : solutions) {
       System.out.println(solution.value);

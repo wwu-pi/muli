@@ -11,8 +11,8 @@ public class ComplicatedCoins {
   }
 
   public ComplicatedCoins(){
-    //List<Solution<Object>> solutions = Muli.getAllSolutions(ComplicatedCoins::searchCoins);
-    List<Solution<Object>> solutions = Muli.getAllSolutions(ComplicatedCoins::searchCoins, SearchStrategy.BreadthFirstSearch);
+    //Solution<Object>[] solutions = Muli.getAllSolutions(ComplicatedCoins::searchCoins);
+    Solution<Object>[] solutions = Muli.getAllSolutions(ComplicatedCoins::searchCoins, SearchStrategy.BreadthFirstSearch);
 
     for (Solution<Object> solution : solutions) {
       System.out.println(solution.value);

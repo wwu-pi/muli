@@ -11,7 +11,7 @@ public class NoCoin {
   }
 
   public NoCoin(){
-    List<Solution<Object>> solutions = Muli.getAllSolutions(NoCoin::searchCoins);
+    Solution<Object>[] solutions = Muli.getAllSolutions(NoCoin::searchCoins);
     
     for (Solution<Object> solution : solutions) {
       System.out.println(solution.value);
