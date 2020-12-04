@@ -1,0 +1,26 @@
+package applications.freeArrays;
+import de.wwu.muli.*;
+import de.wwu.muli.solution.*;
+
+
+public class SimpleSort {
+    public static void main(String[] args) {
+        int[] b = {1, 42, 17, 56, 78, 5, 27, 39, 12, 8}; // 10 elements
+        Solution<Object> result = Muli.getOneSolution(() -> sort(b));
+    }
+    public static int[] sort(int[] b) {
+        int[] idx free;
+        boolean usedIdx[] free;
+        int[] a free;
+        if (a.length != b.length) throw Muli.fail();
+        for (int i = 0; i < b.length; i++) {
+            if (usedIdx[idx[i]]) throw Muli.fail();
+            a[idx[i]] = b[i];
+            usedIdx[idx[i]] = true;
+        }
+        for (int i = 0; i < b.length-1; i++) {
+            if (a[i] > a[i + 1]) throw Muli.fail();
+        }
+        return a;
+    }
+}
