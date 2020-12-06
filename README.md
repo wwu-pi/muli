@@ -1,6 +1,9 @@
 Münster Logic-Imperative Language
 =================================
 
+**Additional remark for using Z3 with Free Arrays:** At the moment, Z3 must still be downloaded and included manually. Releases for Z3 can be retrieved [here](https://github.com/Z3Prover/z3/releases).
+
+
 **Constraint-logic object-oriented programming:** Combine the flexibility of OO/imperative languages with the expressiveness
 of constraint-logic programming! Muli builds upon Java and extends it with
 features adapted from constraint-logic programming. Muli offers free variables, constraints, encapsulated search,
