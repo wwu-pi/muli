@@ -1,0 +1,42 @@
+package applications.toys;
+
+import de.wwu.muli.*;
+import de.wwu.muli.solution.*;
+
+public class NQueens {
+
+  public static void main(String[] args) {
+  long start = System.nanoTime();
+  Solution<Object> solution = Muli.getOneSolution(NQueens::solve);
+  long end = System.nanoTime();
+  System.out.println(end - start);
+  Queen[] result = (Queen[])solution.value;
+  for (Queen q: result) {
+    System.out.println("(" + q.x + "," + q.y + ")");
+  }
+  }
+
+  private static Queen[] solve() {
+    final int n = 8;
+    Board board = new Board(n);
+    Queen[] qs = new Queen[n];
+    for (int i = 0; i < n; i++) {
+        Queen q free;
+        qs[i] = q;
+    }
+    for (int i = 0; i < n; i++) {
+        boolean valid = board.isOnBoard(qs[i]);
+        if (!valid) {
+            throw Muli.fail();
+        }
+
+        for (int j = i+1; j < n; j++) {
+            boolean t = board.threatens(qs[i], qs[j]);
+            if (t) {
+                throw Muli.fail();
+            }
+        }
+    }
+    return qs;
+  }
+}
