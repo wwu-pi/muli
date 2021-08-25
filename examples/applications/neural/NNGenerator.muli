@@ -1,0 +1,83 @@
+package applications.neural;
+
+import java.io.File;
+import java.util.stream.Stream;
+import de.wwu.muli.*;
+import de.wwu.muli.solution.*;
+
+public class NNGenerator {
+    public static String writeAndRunScript(String script) {
+        String stdout = Muli.executeOnShell("/home/j_dage01/Dev-work/muli-for-neural-nets/venv/bin/python",
+                "/home/j_dage01/Dev-work/muli-for-neural-nets/py-gen/",
+                "network-", ".py",
+                script);
+        return stdout;
+    }
+
+    public static int workingNNs = 0;
+
+    public static void main(String[] args) {
+        Stream<Solution<Object>> solutions = Muli.muli(NNGenerator::search, SearchStrategy.IterativeDeepening);
+        solutions.forEach(solution -> {
+            //System.out.print("Solution: ");
+            String creation = (String)solution.value;
+            Network n = Network.fromCreationSequence(creation, 4, 2);
+                // Execute python script.
+                String calculated = NNGenerator.writeAndRunScript(n.toPyCode());
+                // Obtain calculated fitness.
+                String[] a = calculated.split(",");
+                System.out.println(calculated);
+                // Quit if enough good results are found.
+                /*if (a[0].equals("solved")) {
+                    NNGenerator.workingNNs++;
+                    if (NNGenerator.workingNNs >= 10) {
+                        System.exit(0);
+                    }
+                }*/
+
+        });
+    }
+
+    private static String search() {
+    //private static Network search() {
+        Network network = new Network(4, 2);
+        return generateNetwork(network, "");
+    }
+
+    private static String generateNetwork(Network network, String seq) {
+    //private static Network generateNetwork(Network network, String seq) {
+        int operation free;
+        String newSeq = seq;
+        if (operation == 0) {
+            // Return current network instead of applying another operation.
+            // System.out.println(seq);
+            return seq;
+        } else if (operation == 1) {
+            // Add layer.
+            newSeq += "a";
+            network.addLayer();
+            // Next operation.
+            return generateNetwork(network, newSeq);
+        } else {
+            if (network.numberOfLayers > 0) {
+                // Add node. But where?
+                newSeq += "b";
+                int numberOfLayers = network.numberOfLayers;
+                int toLayer free;
+                for (int layer = 0; layer < numberOfLayers; layer++) {
+                    if (layer == toLayer) {
+                        newSeq += layer;
+                        network.addNode(layer);
+                        // Next operation.
+                        return generateNetwork(network, newSeq);
+                    } else {
+                        // Try adding at a different place!
+                    }
+                }
+                throw Muli.fail();
+            } else {
+                throw Muli.fail();
+            }
+        }
+    }
+}
