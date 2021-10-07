@@ -1,0 +1,84 @@
+package sac22_mulib_benchmark;
+
+import java.util.List;
+import de.wwu.muli.*;
+import de.wwu.muli.solution.*;
+
+public class Board {
+    final int dim;
+
+    public Board(int dim) {
+        this.dim = dim;
+    }
+
+    public boolean isOnBoard(Queen q) {
+        if (q.x < 0) return false;
+        if (q.x > dim-1) return false;
+        if (q.y < 0) return false;
+        if (q.y > dim-1) return false;
+        return true;
+    }
+
+    public boolean threatens(Queen p, Queen q) {
+        if (p.x == q.x) return true;
+        if (p.y == q.y) return true;
+        if (p.x - p.y == q.x - q.y) return true;
+        if (p.x + p.y == q.x + q.y) return true;
+        return false;
+    }
+}
+
+public class Queen {
+    int x, y;
+
+    public Queen() {
+        int x free;
+        int y free;
+        this.x = x;
+        this.y = y;
+    }
+}
+
+public class NQueens {
+
+  public static void main(String[] args) {
+      for (int i = 0; i < 10; i++) {
+        long start = System.nanoTime();
+        Solution[] solutions = Muli.getAllSolutions(NQueens::solve);
+        System.out.println(solutions.length);
+        long end = System.nanoTime();
+        System.out.println(end-start);
+        for (int j = 0; j < solutions.length; j++) {
+            Solution s = solutions[j];
+            Queen[] qs = (Queen[]) s.value;
+            for (Queen q : qs) {
+                System.out.println(q.x + " " + q.y);
+            }
+        }
+      }
+  }
+
+  private static Queen[] solve() {
+    final int n = 12;
+    Board board = new Board(n);
+    Queen[] qs = new Queen[n];
+    for (int i = 0; i < n; i++) {
+        Queen q = new Queen();
+        qs[i] = q;
+    }
+    for (int i = 0; i < n; i++) {
+        boolean valid = board.isOnBoard(qs[i]);
+        if (!valid) {
+            throw Muli.fail();
+        }
+
+        for (int j = i+1; j < n; j++) {
+            boolean t = board.threatens(qs[i], qs[j]);
+            if (t) {
+                throw Muli.fail();
+            }
+        }
+    }
+    return qs;
+  }
+}
