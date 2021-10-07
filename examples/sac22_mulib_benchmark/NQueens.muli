@@ -59,7 +59,7 @@ public class NQueens {
   }
 
   private static Queen[] solve() {
-    final int n = 12;
+    final int n = 14;
     Board board = new Board(n);
     Queen[] qs = new Queen[n];
     for (int i = 0; i < n; i++) {
