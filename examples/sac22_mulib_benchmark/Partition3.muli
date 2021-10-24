@@ -1,5 +1,5 @@
 package sac22_mulib_benchmark;
-import java.util.stream.Stream;
+
 import de.wwu.muli.*;
 import de.wwu.muli.solution.*;
 
@@ -11,33 +11,33 @@ public class Partition3 {
 	int[] mapping; // mapping of inputs to triples
 
 	public static void main(String[] args) {
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < 30; i++) {
 	    long start = System.nanoTime();
-	    new Partition3();
+	    // map each input element to a triple
+        Solution[] solutions = Muli.getAllSolutions(() -> {
+            Partition3 p = new Partition3();
+            p.mapping = p.generateMapping();
+            p.checkMapping();
+        	return p.mapping;
+        });
+        System.out.println(solutions.length);
 	    long end = System.nanoTime();
 	    System.out.println(end-start);
 	}
     }
 
 	public Partition3(){
-		a = toN(n); // generate some input
+		a = new int[n]; // generate some input
+		for(int i=0; i<n; i++) a[i] = i;
 		for(int k: a) sum += k;
-
-		// map each input element to a triple
-		Solution[] solutions = Muli.getAllSolutions(() -> {
-			mapping = generateMapping(n);
-			checkMapping();
-			return mapping;
-		});
-		System.out.println(solutions.length);
     }
 
 	public static int[] toN(int n){
 		int[] a = new int[n];
-		for(int i=0; i<n; i++) a[i] = i;
+
 		return a; }
 
-	public int[] generateMapping(int n){
+	public int[] generateMapping(){
 		int[] mapping = new int[n];
 		for(int i=0; i<n; i++) {
 			int triple = freeVar();

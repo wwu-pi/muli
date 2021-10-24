@@ -1,12 +1,8 @@
 package sac22_mulib_benchmark;
 
-import java.util.List;
 import de.wwu.muli.*;
 import de.wwu.muli.solution.*;
-import java.lang.Object;
-import de.wwu.muli.tcg.*;
-import java.lang.Math;
-import de.wwu.muli.tcg.testsetreducer.*;
+
 
 // Taken from https://github.com/SymbolicPathFinder/jpf-symbc/blob/master/src/examples/WBS.java.
 // The class has been altered to fit Muli.
@@ -244,12 +240,12 @@ public class WBS {
     }
 
     public static void main(String[] args) {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 30; i++) {
             long startTime = System.nanoTime();
             Solution[] solutions = Muli.getAllSolutions(WBS::launch);
-            System.out.println(solutions.length);
             long endTime = System.nanoTime();
             System.out.println(endTime - startTime);
+            System.out.println(solutions.length);
         }
     }
 }

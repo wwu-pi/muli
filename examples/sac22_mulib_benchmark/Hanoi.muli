@@ -1,0 +1,85 @@
+package sac22_mulib_benchmark;
+
+import de.wwu.muli.*;
+import de.wwu.muli.solution.*;
+
+
+public class MainHanoi {
+
+    public static void main(String[] args) {
+        for (int i = 0; i < 30; i++) {
+            long startTime = System.nanoTime();
+            Solution[] solutions = Muli.getAllSolutions(MainHanoi::searchRegion);
+            long endTime = System.nanoTime();
+            System.out.println((endTime-startTime));
+            System.out.println(solutions.length);
+        }
+    }
+
+    static int searchRegion() {
+        int n free;
+        Hanoi h = new Hanoi();
+
+        if (n < 1 || n > 11) {
+            throw Muli.fail();
+        }
+        h.counter = 0;
+        h.applyHanoi(n, 1, 3, 2);
+        int result = h.hanoi(n);
+        // result and the counter should be the same!
+        if(h.counter != result){
+            throw new IllegalStateException("result and counter not the same");
+        }
+        return result;
+    }
+
+}
+
+
+/*
+ * Origin of the benchmark:
+ *     license: MIT (see /java/jayhorn-recursive/LICENSE)
+ *     repo: https://github.com/jayhorn/cav_experiments.git
+ *     branch: master
+ *     root directory: benchmarks/recursive
+ * The benchmark was taken from the repo: 24 January 2018
+ */
+
+// Taken and adjusted from https://github.com/sosy-lab/sv-benchmarks/blob/master/java/jayhorn-recursive/SatHanoi01/Main.java
+public class Hanoi {
+
+  public int counter; // removed static declaration
+
+  /*
+   * This function returns the optimal amount of steps,
+   * needed to solve the problem for n-disks
+   */
+  public int hanoi(int n) {
+    if (n == 1) {
+      return 1;
+    }
+    return 2 * (hanoi(n - 1)) + 1;
+  }
+
+  /*
+   * This applies the known algorithm, without executing it (so no arrays).
+   * But the amount of steps is counted in a global variable.
+   */
+  public void applyHanoi(int n, int from, int to, int via) {
+    if (n == 0) {
+      return;
+    }
+    // increment the number of steps
+    counter++;
+    applyHanoi(n - 1, from, via, to);
+    applyHanoi(n - 1, via, to, from);
+  }
+
+  public void setCounter(int i){
+    this.counter = i;
+  }
+
+  public int getCounter(){
+    return this.counter;
+  }
+}

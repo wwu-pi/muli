@@ -1,0 +1,55 @@
+package sac22_mulib_benchmark;
+
+import java.util.ArrayList;
+import de.wwu.muli.*;
+import de.wwu.muli.solution.*;
+
+public class GraphColoring {
+
+    public static void main(String[] args) {
+    	for (int outer = 0; outer < 30; outer++) {
+            long start = System.nanoTime();
+            // search coloring
+            Solution[] solutions = Muli.getAllSolutions(() -> {
+                GraphColoring gc = new GraphColoring();
+                gc.generateColoring();
+                gc.checkColoring();
+                return gc.colors;
+            });
+            long end = System.nanoTime();
+            System.out.println((end - start));
+            System.out.println(solutions.length);
+        }
+    }
+
+	private class Edge {
+		int start; int end;
+		public Edge(int s, int e) { start = s; end = e; }
+	}
+	int n = 35;    // number of nodes
+	int c = 35;    // number of colors
+	int[] colors; // colors of nodes
+	ArrayList<Edge> edges = new ArrayList<Edge>();
+
+	public GraphColoring(){
+        colors = new int[n];
+        generateGraph(); // generate some graph
+    }
+
+	public void generateGraph(){
+		for(int i=0; i<n; i++)
+			for(int j=0; j<n; j++)
+				if (i != j)
+					edges.add(new Edge(i,j)); }
+
+	public void generateColoring(){
+		for(int i=0; i<n; i++) {
+			int color free;
+			if (!(color > 0 && color <= c))
+				throw Muli.fail();
+			else colors[i] = color; } }
+
+	public void checkColoring(){
+	for(Edge e: edges) {
+		if (colors[e.start] == colors[e.end])
+			throw Muli.fail(); } } }

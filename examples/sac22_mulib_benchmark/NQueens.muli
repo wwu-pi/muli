@@ -1,6 +1,5 @@
 package sac22_mulib_benchmark;
 
-import java.util.List;
 import de.wwu.muli.*;
 import de.wwu.muli.solution.*;
 
@@ -42,19 +41,13 @@ public class Queen {
 public class NQueens {
 
   public static void main(String[] args) {
-      for (int i = 0; i < 10; i++) {
+      for (int i = 0; i < 30; i++) {
         long start = System.nanoTime();
         Solution[] solutions = Muli.getAllSolutions(NQueens::solve);
         System.out.println(solutions.length);
         long end = System.nanoTime();
         System.out.println(end-start);
-        for (int j = 0; j < solutions.length; j++) {
-            Solution s = solutions[j];
-            Queen[] qs = (Queen[]) s.value;
-            for (Queen q : qs) {
-                System.out.println(q.x + " " + q.y);
-            }
-        }
+        System.out.println(solutions.length);
       }
   }
 
