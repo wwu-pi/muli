@@ -1,0 +1,1 @@
+This folder comprises the licenses of the examples used for test case generation as can be found under muli/examples/sac22_mulib_benchmark
